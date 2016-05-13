@@ -84,9 +84,17 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.msm8916
+     accelcal \
+     AccCalibration \
+     sensord \
+     sensors.msm8916
 
 # Media
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+PRODUCT_PACKAGES += \
+    qcmediaplayer \
+    libqcmediaplayer
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
@@ -100,6 +108,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/trunk-releasekey
 
+# Add libboringssl-compat.so to provide BIO_f_base64
+TARGET_REQUIRES_B64_COMPAT = true
+PRODUCT_PACKAGES += \
+    libboringssl-compat
+
 # Misc dependency packages
 PRODUCT_PACKAGES += \
     ebtables \
@@ -108,6 +121,7 @@ PRODUCT_PACKAGES += \
     libbson \
     libcnefeatureconfig \
     libtinyxml \
+    libstlport \
     libxml2
 
 # USB

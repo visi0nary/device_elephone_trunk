@@ -32,7 +32,7 @@ TARGET_CPU_CORTEX_A53 := true
 BOARD_USES_SECURE_SERVICES := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -68,7 +68,7 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # GPS
 USE_DEVICE_SPECIFIC_GPS := true
-TARGET_NO_RPC := true
+USE_DEVICE_SPECIFIC_LOC_API := true
 
 # Radio
 TARGET_RIL_VARIANT := caf
@@ -91,8 +91,8 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_F2FS := true
 
 # WiFi - EAP-SIM
-CONFIG_EAP_PROXY := qmi
-CONFIG_EAP_PROXY_DUAL_SIM := true
+#CONFIG_EAP_PROXY := qmi
+#CONFIG_EAP_PROXY_DUAL_SIM := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
